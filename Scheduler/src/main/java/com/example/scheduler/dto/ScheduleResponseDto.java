@@ -1,16 +1,25 @@
 package com.example.scheduler.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor
 public class ScheduleResponseDto {
-    private Long id;
-    private String job;
-    private String creator;
-    private LocalDateTime createDate;
-    private LocalDateTime updateDate;
+
+    private final Long id;
+    private final String task;
+    private final String memberName;
+    private final String memberEmail;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime updatedAt;
+
+    public ScheduleResponseDto(Long id, String task, String memberName, String memberEmail, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.task = task;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

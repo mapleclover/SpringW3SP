@@ -1,15 +1,15 @@
 package com.example.scheduler.service;
 
-import com.example.scheduler.dto.ScheduleRequestDto;
 import com.example.scheduler.dto.ScheduleResponseDto;
+import com.example.scheduler.dto.ScheduleSaveRequestDto;
+import com.example.scheduler.dto.ScheduleUpdateRequestDto;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 
-public interface ScheduleService {
-    ScheduleResponseDto saveSchedule(ScheduleRequestDto schedule);
-    List<ScheduleResponseDto> getAllSchedules();
-    List<ScheduleResponseDto> getAllSchedulesByFilters(String updateDate, String creator);
-    ScheduleResponseDto getScheduleById(Long id);
-    ScheduleResponseDto updateSchedule(Long id, String job, String creator, String password);
-    void deleteSchedule(Long id, String password);
+public interface ScheduleService{
+    ScheduleResponseDto save(ScheduleSaveRequestDto requestDto);
+    ScheduleResponseDto findScheduleById(Long id);
+    Page<ScheduleResponseDto> findAll(String updatedDate, String memberName, Long memberId, int page, int size);
+    ScheduleResponseDto updateSchedule(Long id, ScheduleUpdateRequestDto requestDto);
+    void deleteSchedule(Long id, String memberName, String password);
 }

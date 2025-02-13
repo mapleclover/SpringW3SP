@@ -1,18 +1,14 @@
 package com.example.scheduler.repository;
 
-import com.example.scheduler.dto.ScheduleResponseDto;
 import com.example.scheduler.entity.Schedule;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface ScheduleRepository {
-    ScheduleResponseDto saveSchedule(Schedule schedule);
-    List<ScheduleResponseDto> getAllSchedules();
-    List<ScheduleResponseDto> getAllSchedulesByDate(String updateDate);
-    List<ScheduleResponseDto> getAllSchedulesByCreator(String creator);
-    List<ScheduleResponseDto> getAllSchedulesByFilters(String updateDate, String creator);
-    ScheduleResponseDto getScheduleByIdOrElseThrow(Long id);
-    int updateSchedule(Long id, String job, String creator);
-    Boolean CheckPasswordValidity(Long id, String password);
-    int deleteSchedule(Long id);
+    Schedule save(Schedule schedule);
+    Optional<Schedule> findById(Long id);
+    Page<Schedule> findAll(String updatedDate, String memberName, Long memberId, int page, int size);
+    Schedule update(Schedule schedule);
+    void deleteById(Long id);
 }
